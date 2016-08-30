@@ -25,9 +25,21 @@
   Output: The file that we will be reading into R is called 'urban.csv.gz'. It is a comma-separated-value (CSV) file compressed with gzip. 
 
 - Class: cmd_question
+  Output: The directory in which the 'urban.csv.gz' data file is located is saved in an R object called 'datapath'. Print out this object to see the path.
+  CorrectAnswer: print(datapath)
+  AnswerTests: omnitest(correctExpr = "print(datapath)")
+  Hint: Try 'print(datapath)'
+  
+- Class: cmd_question
+  Output: Use the 'file.path()' function to construct the full path to the 'urban.csv.gz' file and store it in an object called 'datafile'
+  CorrectAnswer: datafile <- file.path(datapath, "urban.csv.gz")
+  AnswerTests: omnitest(correctExpr = 'datafile <- file.path(datapath, "urban.csv.gz")')
+  Hint: Try 'datafile <- file.path(datapath, "urban.csv.gz")'
+
+- Class: cmd_question
   Output: How would you read this file into R using the read_csv() function in the 'readr' function and save the resulting data frame to an object named 'urban'? Assume that the file is in your current working directory.
-  CorrectAnswer: urban <- read_csv("urban.csv.gz")
-  AnswerTests: omnitest(correctExpr = 'urban <- read_csv("urban.csv.gz")')
+  CorrectAnswer: urban <- read_csv(datafile)
+  AnswerTests: omnitest(correctExpr = 'urban <- read_csv(datafile)')
   Hint: Don't worry about the fact that the file is compressed or about specifying any other options to read_csv()
 
 - Class: cmd_question
